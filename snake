@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fortune Snake - Demo Slot</title>
+<style>
+ body{margin:0;background:#0b0b0b;font-family:Poppins,sans-serif;color:#fff;text-align:center;}
+ h1{margin-top:20px;}
+ #slot{display:flex;justify-content:center;gap:20px;margin:40px auto;width:320px;}
+ .reel{width:90px;height:90px;background:#111;border:3px solid #44ff88;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:40px;transition:0.2s;}
+ #spin{padding:18px 40px;font-size:20px;background:#44ff88;color:#000;border:none;border-radius:12px;font-weight:bold;cursor:pointer;}
+ #spin:disabled{opacity:0.5;}
+ #result{margin-top:20px;font-size:22px;}
+</style>
+</head>
+<body>
+<h1>🐍 Fortune Snake - Modo Teste</h1>
+<div id="slot">
+ <div class="reel"><img id="r1" src="" width="80"></div>
+ <div class="reel"><img id="r2" src="" width="80"></div>
+ <div class="reel"><img id="r3" src="" width="80"></div>
+</div>
+<button id="spin">Girar</button>
+<p id="result"></p>
+<script>
+const symbols = [
+  "../promo_unpack/FortuneSnake/snake_idle.webp",
+  "../promo_unpack/Promo/Gold.webp",
+  "../promo_unpack/Promo/Fireworks.webp",
+  "../promo_unpack/Promo/Token.webp",
+  "../promo_unpack/Promo/Coins.webp",
+  "../promo_unpack/Promo/RedEnvelope.webp"
+];
+function rand(){return symbols[Math.floor(Math.random()*symbols.length)];}const spinBtn = document.getElementById('spin'); spinBtn.onclick = () => { spinBtn.disabled = true; document.getElementById('result').innerText = "";
+
+let r1 = rand(), r2 = rand(), r3 = rand();
+
+setTimeout(()=>document.getElementById('r1').src = r1,200); setTimeout(()=>document.getElementById('r2').src = r2,400); setTimeout(()=>document.getElementById('r3').src = r3,600);
+
+setTimeout(()=>{ if(r1===r2 && r2===r3){ document.getElementById('result').innerText = "🎉 JACKPOT! Você acertou os 3 símbolos!"; } else if(r1===r2 || r2===r3){ document.getElementById('result').innerText = "✨ Quase! Dois símbolos iguais!"; } else { document.getElementById('result').innerText = "Tente novamente..."; } spinBtn.disabled = false; },900); }; </script>
+
+</body>
+</html>
